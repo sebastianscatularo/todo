@@ -1,1 +1,10 @@
 
+[submodule "todo-single-web-application"]
+	path = todo-single-web-application
+	url = https://github.com/sebastianscatularo/todo-single-web-application
+[submodule "todo-rest-api-provider"]
+	path = todo-rest-api-provider
+	url = https://github.com/sebastianscatularo/todo-rest-api-provider
+[submodule "todo-oauth-provider"]
+	path = todo-oauth-provider
+	url = https://github.com/sebastianscatularo/todo-oauth-provider
