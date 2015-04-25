@@ -1,0 +1,45 @@
+@startuml
+skinparam componentStyle uml2
+
+interface HTTP
+
+interface "API RESTFul" as APIREST
+
+
+node "Simple Web App" {
+    [Node App]
+    [JS App]
+}
+
+node "OAuth Provider" {
+    [Spring OAuth Provider]
+    database "Auth DB" {
+        [User Schema]
+    }
+
+    interface "ESB" as Integration
+}
+
+node "API Provider" {
+    [Spring API Provider]
+    database "Content DB" {
+        [User content]
+    }
+}
+
+[JS App] ..> [Node App] : Use
+[User Schema] <.up. [Spring OAuth Provider] : Use
+[User content] <.. [Spring API Provider] : Use
+Integration ..> [Spring Integration]
+
+
+APIREST .up.> HTTP
+
+[Spring API Provider] -- APIREST
+[JS App] .up.> APIREST : Use
+
+[Node App] --( Integration
+[Spring OAuth Provider] -right-( Integration
+[Spring API Provider] --( Integration
+
+@enduml
